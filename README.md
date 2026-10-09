@@ -14,7 +14,13 @@ The package contains a shared skill, a hosted MCP configuration and a self-conta
 
 The OpenAI package candidate includes listing links, the existing Sysdom wing icon, and five positive plus three negative review cases. The case definitions are review instructions, not evidence that all native-host cases have run. Public directory submission is still pending: publisher identity and domain verification, current automated scans, complete policy coverage, actual host walkthroughs, and an accessible genuine recording must be checked in the portal. No placeholder recording URL is included.
 
-The Codex package candidate is technical version 0.1.4; the existing Claude Code manifest remains at 0.1.3 while OpenAI submission is completed. Hosted MCP is part of the same OpenAI plugin, not a separate directory listing. The current review service uses anonymous per-review capabilities; it does not require a Sysdom login or reviewer password.
+The Codex package candidate is technical version 0.1.4. This local Claude preparation branch aligns the Claude candidate to 0.1.4 with the same public skill/helper and adds listing links; it is not a submitted or approved listing. The preserved OpenAI ZIP remains based on public commit c1380a9. Hosted MCP is part of the same OpenAI plugin, not a separate directory listing. The current review service uses anonymous per-review capabilities; it does not require a Sysdom login or reviewer password.
+
+## Claude submission preparation
+
+The Claude directory uses a plugin bundle from GitHub plus a separate connector submission for this hosted MCP server, both in the intended owning Claude organization. The public README documents the hosted MCP and the Node helper's direct connection to app.sysdom.ai. No account, paid Claude plan, connected GitHub permissions or actual Claude conversation has been verified by these package checks.
+
+The package has no overall Sysdom license yet. Third-party notices remain intact; the owner must choose distribution terms before directory validation can pass. The linked privacy and terms pages also require the review/MCP additions before final attestations. We do not claim Claude approval, verified publisher status, broad reliability or a completed live Claude test. See [Claude submission requirements](https://claude.com/docs/plugins/submit).
 
 ## What happens
 

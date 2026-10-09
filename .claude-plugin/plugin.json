@@ -1,8 +1,18 @@
 {
   "name": "sysdom-venture-review",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Prepare selected evidence, approve one private Sysdom Venture Review, and return a cited result to your current assistant.",
   "author": {
-    "name": "Systems Intelligence LLC"
-  }
+    "name": "Systems Intelligence LLC",
+    "email": "support@sysdom.ai",
+    "url": "https://sysdom.ai"
+  },
+  "displayName": "Sysdom Venture Review",
+  "homepage": "https://sysdom.ai",
+  "repository": "https://github.com/Sistemist/sysdom-venture-review-plugin",
+  "icon": "./assets/sysdom-wing.png",
+  "documentationUrl": "https://github.com/Sistemist/sysdom-venture-review-plugin#readme",
+  "supportUrl": "https://sysdom.ai/contact",
+  "privacyPolicyUrl": "https://sysdom.ai/legal/privacy-policy",
+  "termsOfServiceUrl": "https://sysdom.ai/legal/terms-conditions"
 }

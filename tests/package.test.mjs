@@ -13,7 +13,10 @@ test("package has only reviewed public files and matching native/catalog identit
   assert.deepEqual(files, [".agents/plugins/marketplace.json", ".claude-plugin/marketplace.json", ".claude-plugin/plugin.json", ".codex-plugin/plugin.json", ".gitignore", ".mcp.json", "README.md", "THIRD_PARTY_NOTICES.md", "assets/sysdom-wing.png", "scripts/public-review.mjs", "skills/venture-review/SKILL.md", "tests/package.test.mjs"]);
   const codex = JSON.parse(await readFile(path.join(root, ".codex-plugin/plugin.json"))), claude = JSON.parse(await readFile(path.join(root, ".claude-plugin/plugin.json")));
   assert.equal(codex.name, "sysdom-venture-review"); assert.equal(claude.name, codex.name);
-  assert.equal(claude.version, "0.1.3"); // The Claude package is unchanged during OpenAI submission work.
+  assert.equal(claude.version, "0.1.4");
+  for (const field of ["documentationUrl", "supportUrl", "privacyPolicyUrl", "termsOfServiceUrl"]) assert.equal(new URL(claude[field]).protocol, "https:");
+  assert.equal(claude.icon, "./assets/sysdom-wing.png");
+  assert.equal(claude.displayName, "Sysdom Venture Review");
   assert.equal(codex.version, "0.1.4"); assert.equal(codex.mcpServers, "./.mcp.json");
   assert.deepEqual(JSON.parse(await readFile(path.join(root, ".mcp.json"))), {
     mcpServers: { sysdom_venture_review: { type: "http", url: "https://mcp.sysdom.ai/venture-review/mcp" } },
