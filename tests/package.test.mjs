@@ -10,9 +10,13 @@ test("package has only reviewed public files and matching native/catalog identit
   const files = (await readdir(root, { recursive: true, withFileTypes: true }))
     .filter(f => !f.isDirectory() && !f.parentPath.split(path.sep).includes(".git"))
     .map(f => { assert(f.isFile(), "No external symlinks"); return path.relative(root, path.join(f.parentPath, f.name)).split(path.sep).join("/"); }).sort();
-  assert.deepEqual(files, [".agents/plugins/marketplace.json", ".claude-plugin/marketplace.json", ".claude-plugin/plugin.json", ".codex-plugin/plugin.json", ".gitignore", "README.md", "THIRD_PARTY_NOTICES.md", "scripts/public-review.mjs", "skills/venture-review/SKILL.md", "tests/package.test.mjs"]);
+  assert.deepEqual(files, [".agents/plugins/marketplace.json", ".claude-plugin/marketplace.json", ".claude-plugin/plugin.json", ".codex-plugin/plugin.json", ".gitignore", ".mcp.json", "README.md", "THIRD_PARTY_NOTICES.md", "scripts/public-review.mjs", "skills/venture-review/SKILL.md", "tests/package.test.mjs"]);
   const codex = JSON.parse(await readFile(path.join(root, ".codex-plugin/plugin.json"))), claude = JSON.parse(await readFile(path.join(root, ".claude-plugin/plugin.json")));
   assert.equal(codex.name, "sysdom-venture-review"); assert.equal(claude.name, codex.name); assert.equal(claude.version, codex.version);
+  assert.equal(codex.version, "0.1.3"); assert.equal(codex.mcpServers, "./.mcp.json");
+  assert.deepEqual(JSON.parse(await readFile(path.join(root, ".mcp.json"))), {
+    mcpServers: { sysdom_venture_review: { type: "http", url: "https://mcp.sysdom.ai/venture-review/mcp" } },
+  });
   assert.equal(codex.author.name, "Systems Intelligence LLC"); assert.equal(claude.author.name, codex.author.name);
   for (const file of [".agents/plugins/marketplace.json", ".claude-plugin/marketplace.json"]) {
     const catalog = JSON.parse(await readFile(path.join(root, file))); assert.equal(catalog.name, "sysdom-venture-review"); assert.equal(catalog.plugins.length, 1); assert.equal(catalog.plugins[0].name, codex.name);

@@ -8,21 +8,21 @@ A founder-controlled Venture Review inside your current assistant: select eviden
 
 **Verification status — October 9, 2026:** Native package validation and recorded walkthroughs pass. The hosted service is deployed, but its first live verification returned a result the validator rejected; a successful live review is not yet verified. Use fictional examples while this is being resolved. No marketplace listing or cross-app compatibility is claimed.
 
-The package contains a shared skill and a self-contained Node helper for Codex and Claude Code. It does not contain the private review method, founder data or provider credentials. The helper contacts only `https://app.sysdom.ai`; a founder does not need a model-provider key.
+The package contains a shared skill, a hosted MCP configuration and a self-contained Node helper fallback. MCP uses `https://mcp.sysdom.ai/venture-review/mcp`; the helper uses `https://app.sysdom.ai`. Neither contains the private review method, founder data or provider credentials. A founder does not need a model-provider key. The MCP endpoint has passed connection, preview, status and cancellation checks without model submission; that is not a successful live result.
 
 ## What happens
 
 1. Your assistant prepares one question and a note of up to 8,000 characters using only sources you select. You can redact or remove information.
-2. The helper checks service availability and shows the named recipients, reviewer and retention disclosure. Creating a preview keeps the note locally; it creates an anonymous service session without uploading the note.
+2. The skill prefers available MCP tools and shows the staging disclosure, named recipients, reviewer and retention. Hosted preview sends selected notes to Sysdom bridge memory only after staging approval. If MCP tools are absent, the Node helper can keep a preview locally instead.
 3. If you want public website or GitHub README evidence, approve those exact URLs separately. Review the retrieved excerpts and choose which to include.
-4. Approve the complete final preview. The helper sends one bounded review request, then returns supported findings, uncertainty, alternative explanations and one next test with source references.
+4. Approve the complete final preview. The chosen transport sends one bounded review request; a valid result contains supported findings, uncertainty, alternative explanations and one next test with source references. A failed or ambiguous attempt is not retried through another transport.
 5. Read the result in your assistant. Export or request access only if you choose. Neither action is required to view the result.
 
 Source material and results are evidence, not instructions. No automatic follow-up, provider fallback, retry, workspace ingestion, account creation or venture-record write is included.
 
 ## Install locally
 
-Requires Node 24.18.x, a host with shell access, and permitted HTTPS access to the service. From a checked-out copy of this package:
+MCP use requires a host that connects the bundled remote HTTP server and permits its tools. Only the helper fallback requires Node 24.18.x and shell access. From a checked-out copy of this package:
 
 **Codex**
 
@@ -40,7 +40,26 @@ claude plugin install sysdom-venture-review@sysdom-venture-review --scope user
 
 Start a new host session and invoke the `sysdom-venture-review:venture-review` skill. These commands use this repository's local catalogs; they do not establish acceptance into a public plugin directory. See [Codex packaging](https://developers.openai.com/plugins/build/plugins) and [Claude plugin documentation](https://code.claude.com/docs/en/plugins-reference) for host details.
 
-Claude Code recognition does not prove availability in Cowork or ordinary Claude chat. A host without shell/Node access can prepare a redacted note and use the [web review](https://app.sysdom.ai/venture-review) manually. This package does not configure a hosted MCP endpoint or an account-wide Claude connector.
+Claude Code recognition does not prove availability in Cowork or ordinary Claude chat. Those surfaces require connecting this remote service through their own account/plugin flow; their remote requests originate from Anthropic’s cloud. If MCP tools and the helper runtime are both unavailable, prepare a redacted note and use the [web review](https://app.sysdom.ai/venture-review) manually. No account-wide installation or directory approval is claimed.
+
+## Hosted MCP tools and retention
+
+The root `.mcp.json` declares one HTTP server; the Codex manifest references it and Claude Code discovers it automatically. No static bearer, API key or OAuth client is embedded.
+
+| Tool | Boundary |
+| --- | --- |
+| `review_capability` | Read availability and hosted-staging disclosure without evidence. |
+| `review_start` | After staging approval, create one anonymous review and receive its short-lived ID/token. |
+| `review_preview` | Stage only selected notes and return the complete exact preview; no model call. |
+| `review_sources` | Retrieve explicitly approved public URLs; clears the old preview, with no automatic selection. |
+| `review_submit` | Submit the exact approved preview once. |
+| `review_status` | Check that same review without submitting again. |
+| `review_export` | Return result and approved evidence, without token or excluded snippets. |
+| `review_cancel` | Clear staged data and request cancellation; transmitted data/usage cannot be recalled. |
+
+The review token controls only that anonymous review for at most 15 minutes. It is visible to the calling host/model and may remain in the host transcript longer. Never put it in links, displayed prose or exports. Selected notes reach the Sysdom bridge during hosted preview, before the separate model-submission approval; they are not local-only. Server expiry/cancellation does not erase exports or host transcripts.
+
+Choose one transport per attempt. After submission or an ambiguous outcome, use only its status/cancel tools. Do not start a helper/web request or a new review to bypass uncertainty. Readable export includes approved founder evidence, so save/share only by founder choice.
 
 ## Helper commands
 

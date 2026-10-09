@@ -1,6 +1,6 @@
 {
   "name": "sysdom-venture-review",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Prepare selected evidence, approve one private Sysdom Venture Review, and return a cited result to your current assistant.",
   "author": {
     "name": "Systems Intelligence LLC"
@@ -9,7 +9,7 @@
   "interface": {
     "displayName": "Sysdom Venture Review",
     "shortDescription": "Prepare a consented evidence packet for review.",
-    "longDescription": "Review and redact selected evidence, inspect named recipients and retention, then approve one bounded review through the canonical Sysdom public service. No founder provider key, hidden collection or automatic follow-up.",
+    "longDescription": "Preview founder-selected evidence and named recipients, then approve one bounded Venture Review through hosted MCP tools or the existing Node helper. No founder provider key, automatic collection, retries or consequential actions.",
     "developerName": "Systems Intelligence LLC",
     "category": "Productivity",
     "capabilities": [
@@ -23,5 +23,6 @@
       "Help me answer a bounded evidence request."
     ],
     "brandColor": "#FF6200"
-  }
+  },
+  "mcpServers": "./.mcp.json"
 }
