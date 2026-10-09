@@ -10,6 +10,12 @@ A founder-controlled Venture Review inside your current assistant: select eviden
 
 The package contains a shared skill, a hosted MCP configuration and a self-contained Node helper fallback. MCP uses `https://mcp.sysdom.ai/venture-review/mcp`; the helper uses `https://app.sysdom.ai`. Neither contains the private review method, founder data or provider credentials. A founder does not need a model-provider key. The MCP endpoint has passed connection, preview, status and cancellation checks without model submission; that is not a successful live result.
 
+## OpenAI submission candidate
+
+The OpenAI package candidate includes listing links, the existing Sysdom wing icon, and five positive plus three negative review cases. The case definitions are review instructions, not evidence that all native-host cases have run. Public directory submission is still pending: publisher identity and domain verification, current automated scans, complete policy coverage, actual host walkthroughs, and an accessible genuine recording must be checked in the portal. No placeholder recording URL is included.
+
+The Codex package candidate is technical version 0.1.4; the existing Claude Code manifest remains at 0.1.3 while OpenAI submission is completed. Hosted MCP is part of the same OpenAI plugin, not a separate directory listing. The current review service uses anonymous per-review capabilities; it does not require a Sysdom login or reviewer password.
+
 ## What happens
 
 1. Your assistant prepares one question and a note of up to 8,000 characters using only sources you select. You can redact or remove information.
