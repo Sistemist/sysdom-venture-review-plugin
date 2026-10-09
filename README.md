@@ -6,7 +6,7 @@ A founder-controlled Venture Review inside your current assistant: select eviden
 
 **Publisher:** Systems Intelligence LLC
 
-**Verification status — October 9, 2026:** Native package validation and recorded walkthroughs pass. The hosted service is deployed, but its first live verification returned a result the validator rejected; a successful live review is not yet verified. Use fictional examples while this is being resolved. No marketplace listing or cross-app compatibility is claimed.
+**Verification status — October 9, 2026:** Native package validation and recorded walkthroughs pass. One fictional live review completed through the web interface, with source references, uncertainty, alternative explanations, a bounded next test and a verified export. Earlier live attempts failed validation; this single successful case is not broad quality or reliability validation. A fresh model-backed review through MCP or a native assistant remains unverified. No marketplace listing or cross-app compatibility is claimed.
 
 The package contains a shared skill, a hosted MCP configuration and a self-contained Node helper fallback. MCP uses `https://mcp.sysdom.ai/venture-review/mcp`; the helper uses `https://app.sysdom.ai`. Neither contains the private review method, founder data or provider credentials. A founder does not need a model-provider key. The MCP endpoint has passed connection, preview, status and cancellation checks without model submission; that is not a successful live result.
 
