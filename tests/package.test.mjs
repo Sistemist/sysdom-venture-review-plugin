@@ -10,7 +10,7 @@ test("package has only reviewed public files and matching native/catalog identit
   const files = (await readdir(root, { recursive: true, withFileTypes: true }))
     .filter(f => !f.isDirectory() && !f.parentPath.split(path.sep).includes(".git"))
     .map(f => { assert(f.isFile(), "No external symlinks"); return path.relative(root, path.join(f.parentPath, f.name)).split(path.sep).join("/"); }).sort();
-  assert.deepEqual(files, [".agents/plugins/marketplace.json", ".claude-plugin/marketplace.json", ".claude-plugin/plugin.json", ".codex-plugin/plugin.json", ".gitignore", ".mcp.json", "README.md", "THIRD_PARTY_NOTICES.md", "assets/sysdom-wing.png", "scripts/public-review.mjs", "skills/venture-review/SKILL.md", "tests/package.test.mjs"]);
+  assert.deepEqual(files, [".agents/plugins/marketplace.json", ".claude-plugin/marketplace.json", ".claude-plugin/plugin.json", ".codex-plugin/plugin.json", ".gitignore", ".mcp.json", "LICENSE", "README.md", "THIRD_PARTY_NOTICES.md", "assets/sysdom-wing.png", "scripts/public-review.mjs", "skills/venture-review/SKILL.md", "tests/package.test.mjs"]);
   const codex = JSON.parse(await readFile(path.join(root, ".codex-plugin/plugin.json"))), claude = JSON.parse(await readFile(path.join(root, ".claude-plugin/plugin.json")));
   assert.equal(codex.name, "sysdom-venture-review"); assert.equal(claude.name, codex.name);
   assert.equal(claude.version, "0.1.4");
@@ -62,4 +62,13 @@ test("bundled helper pins the public service without credentials or real network
   await assert.rejects(runPublicCommand(["capability", "--origin", "https://example.com"], "", async () => { throw new Error("Unexpected network request"); }));
   const rejected = spawnSync(process.execPath, [path.join(root, "scripts/public-review.mjs"), "preview", "--origin", "https://example.com"], { input: "private input must not be echoed", encoding: "utf8", env: { PATH: path.dirname(process.execPath) }, timeout: 5000 });
   assert.equal(rejected.status, 1); assert.equal(rejected.stdout, ""); assert(!rejected.stderr.includes("private input must not be echoed"));
+});
+
+test("license preserves third-party notices and separates brand permission", async () => {
+  const license = await readFile(path.join(root, "LICENSE"), "utf8");
+  const readme = await readFile(path.join(root, "README.md"), "utf8");
+  const notices = await readFile(path.join(root, "THIRD_PARTY_NOTICES.md"), "utf8");
+  assert.match(license, /MIT License/); assert.match(license, /Systems Intelligence LLC/);
+  assert.match(readme, /excluded from that\nMIT grant/); assert.match(readme, /upstream MIT rights, remain unchanged/);
+  assert.match(notices, /Colin McDonnell/); assert.match(notices, /Paperclip AI/);
 });

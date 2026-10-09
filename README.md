@@ -14,13 +14,13 @@ The package contains a shared skill, a hosted MCP configuration and a self-conta
 
 The OpenAI package candidate includes listing links, the existing Sysdom wing icon, and five positive plus three negative review cases. The case definitions are review instructions, not evidence that all native-host cases have run. Public directory submission is still pending: publisher identity and domain verification, current automated scans, complete policy coverage, actual host walkthroughs, and an accessible genuine recording must be checked in the portal. No placeholder recording URL is included.
 
-The Codex package candidate is technical version 0.1.4. This local Claude preparation branch aligns the Claude candidate to 0.1.4 with the same public skill/helper and adds listing links; it is not a submitted or approved listing. The preserved OpenAI ZIP remains based on public commit c1380a9. Hosted MCP is part of the same OpenAI plugin, not a separate directory listing. The current review service uses anonymous per-review capabilities; it does not require a Sysdom login or reviewer password.
+The Codex package candidate is technical version 0.1.4. The Claude candidate is also 0.1.4 with the same public skill/helper and listing links; neither candidate is a submitted or approved listing. Hosted MCP is part of the same OpenAI plugin, not a separate directory listing. The current review service uses anonymous per-review capabilities; it does not require a Sysdom login or reviewer password.
 
 ## Claude submission preparation
 
 The Claude directory uses a plugin bundle from GitHub plus a separate connector submission for this hosted MCP server, both in the intended owning Claude organization. The public README documents the hosted MCP and the Node helper's direct connection to app.sysdom.ai. No account, paid Claude plan, connected GitHub permissions or actual Claude conversation has been verified by these package checks.
 
-The package has no overall Sysdom license yet. Third-party notices remain intact; the owner must choose distribution terms before directory validation can pass. The linked privacy and terms pages also require the review/MCP additions before final attestations. We do not claim Claude approval, verified publisher status, broad reliability or a completed live Claude test. See [Claude submission requirements](https://claude.com/docs/plugins/submit).
+The integration software and documentation are MIT-licensed under the scope below, with third-party notices preserved and separate permission for the supplied wing artwork. The linked privacy and terms pages also require the review/MCP additions before final attestations. We do not claim Claude approval, verified publisher status, broad reliability or a completed live Claude test. See [Claude submission requirements](https://claude.com/docs/plugins/submit).
 
 ## What happens
 
@@ -99,4 +99,24 @@ The optional [request-access page](https://app.sysdom.ai/request-access) creates
 node --test tests/package.test.mjs
 ```
 
-The check uses an injected fake response and makes no model or service calls. The helper is already bundled and has no install-time or runtime package dependencies; no build or `npm install` is needed. Bundle provenance comments refer to its upstream build. Third-party notices are preserved in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md); no new overall license or legal policy is assigned here.
+The check uses an injected fake response and makes no model or service calls. The helper is already bundled and has no install-time or runtime package dependencies; no build or `npm install` is needed. Bundle provenance comments refer to its upstream build. Third-party notices are preserved in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+## License and brand scope
+
+The [MIT License](LICENSE) applies to this repository's public integration software,
+configuration, skill instructions, tests and documentation: `.codex-plugin/`,
+`.claude-plugin/`, `.agents/`, `.mcp.json`, `.gitignore`, `scripts/`, `skills/`,
+`tests/` and `README.md`, where included in the distribution. Third-party portions
+retain their existing rights and notices in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md),
+including Zod and Paperclip. Their notices must be preserved.
+
+The Sysdom names, trademarks and `assets/sysdom-wing.png` are excluded from that
+MIT grant. Permission is granted to reproduce the unmodified supplied wing solely
+to identify, distribute and display the original Sysdom Venture Review integration
+and its directory listing. This is not permission to brand a modified product as
+Sysdom or imply endorsement, and grants no general trademark license.
+
+This package does not include or grant rights in nonbundled private books, review
+rubrics or backend material. Existing independently granted rights, including
+upstream MIT rights, remain unchanged. This scope does not claim ownership of
+abstract methods or ideas. It does not change the hosted service's terms.
