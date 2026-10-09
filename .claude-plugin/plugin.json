@@ -1,0 +1,8 @@
+{
+  "name": "sysdom-venture-review",
+  "version": "0.1.2",
+  "description": "Prepare selected evidence, approve one private Sysdom Venture Review, and return a cited result to your current assistant.",
+  "author": {
+    "name": "Systems Intelligence LLC"
+  }
+}

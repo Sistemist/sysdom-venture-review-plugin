@@ -1,0 +1,20 @@
+{
+  "name": "sysdom-venture-review",
+  "interface": {
+    "displayName": "Sysdom.ai \u2014 Systems Intelligence LLC"
+  },
+  "plugins": [
+    {
+      "name": "sysdom-venture-review",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

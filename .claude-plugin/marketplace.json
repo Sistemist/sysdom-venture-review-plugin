@@ -1,0 +1,16 @@
+{
+  "name": "sysdom-venture-review",
+  "owner": {
+    "name": "Systems Intelligence LLC"
+  },
+  "metadata": {
+    "description": "Sysdom.ai Venture Review plugin for founder-controlled reviews."
+  },
+  "plugins": [
+    {
+      "name": "sysdom-venture-review",
+      "source": "./",
+      "description": "A private Venture Review from selected, founder-approved evidence."
+    }
+  ]
+}

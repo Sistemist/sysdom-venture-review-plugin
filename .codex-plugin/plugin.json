@@ -1,0 +1,27 @@
+{
+  "name": "sysdom-venture-review",
+  "version": "0.1.2",
+  "description": "Prepare selected evidence, approve one private Sysdom Venture Review, and return a cited result to your current assistant.",
+  "author": {
+    "name": "Systems Intelligence LLC"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Sysdom Venture Review",
+    "shortDescription": "Prepare a consented evidence packet for review.",
+    "longDescription": "Review and redact selected evidence, inspect named recipients and retention, then approve one bounded review through the canonical Sysdom public service. No founder provider key, hidden collection or automatic follow-up.",
+    "developerName": "Systems Intelligence LLC",
+    "category": "Productivity",
+    "capabilities": [
+      "Evidence preview",
+      "Redaction",
+      "Founder approval"
+    ],
+    "defaultPrompt": [
+      "Prepare a Venture Review evidence preview.",
+      "Show what would be shared before review.",
+      "Help me answer a bounded evidence request."
+    ],
+    "brandColor": "#FF6200"
+  }
+}
